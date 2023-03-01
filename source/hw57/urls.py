@@ -2,11 +2,12 @@ from django.urls import path
 
 from hw57.views.base import IndexView, IndexRedirectView
 
-from hw57.views.issues import IssueDetail, IssueUpdateView
+from hw57.views.issues import IssueDetail, IssueUpdateView, IssueCreateView
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('issue/', IndexRedirectView.as_view(), name='issue_index_redirect'),
     path('issue/<int:pk>', IssueDetail.as_view(), name='issue_detail'),
     path('issue/<int:pk>/update', IssueUpdateView.as_view(), name='issue_update'),
+    path('issue/create', IssueCreateView.as_view(), name='issue_create')
 ]

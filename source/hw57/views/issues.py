@@ -31,3 +31,20 @@ class IssueUpdateView(TemplateView):
             form.save()
             return redirect('issue_detail', issue.pk)
         return render(request, 'issue_update.html', context={'form': form, 'issue': issue})
+
+
+class IssueCreateView(TemplateView):
+    template_name = 'issue_create.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = IssueForm()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        form = IssueForm(request.POST)
+        if form.is_valid():
+            Issue.objects.create(**form.cleaned_data)
+            return redirect('index')
+        else:
+            return render(request, 'issue_create.html', context={'form': form})
