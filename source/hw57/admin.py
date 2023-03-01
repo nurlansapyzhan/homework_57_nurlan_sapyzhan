@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from hw57.models import Type, Status, Task
+from hw57.models import Type, Status, Issue
 
 
 # Register your models here.
@@ -26,4 +26,4 @@ class TaskAdmin(admin.ModelAdmin):
 
 admin.site.register(Type, TypeAdmin)
 admin.site.register(Status, StatusAdmin)
-admin.site.register(Task, TaskAdmin)
+admin.site.register(Issue, TaskAdmin)

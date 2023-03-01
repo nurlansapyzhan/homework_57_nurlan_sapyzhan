@@ -1,3 +1,3 @@
 from .status import Status
-from .task import Task
+from .issue import Issue
 from .type import Type

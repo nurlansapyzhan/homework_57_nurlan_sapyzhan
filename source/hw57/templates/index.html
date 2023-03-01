@@ -8,12 +8,12 @@
     </li>
 {% endblock %}
 {% block content %}
-    {% for task in tasks %}
+    {% for issue in issues %}
         <div class="card mt-2">
             <div class="card-body">
-                <h5 class="card-title">{{ task.summary }}</h5>
-                <p class="card-text">{{ task.description }}</p>
-                <a href="{% url 'task_detail' task.pk %}" class="btn btn-secondary">More</a>
+                <h5 class="card-title">{{ issue.summary }}</h5>
+                <p class="card-text">{{ issue.description }}</p>
+                <a href="{% url 'issue_detail' issue.pk %}" class="btn btn-secondary">More</a>
             </div>
         </div>
     {% endfor %}

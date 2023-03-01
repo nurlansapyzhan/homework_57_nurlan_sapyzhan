@@ -4,7 +4,7 @@ from hw57.models.status import Status
 from hw57.models.type import Type
 
 
-class Task(models.Model):
+class Issue(models.Model):
     summary = models.CharField(
         max_length=100,
         null=False,

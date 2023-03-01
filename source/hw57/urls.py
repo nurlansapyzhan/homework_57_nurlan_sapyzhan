@@ -1,11 +1,12 @@
 from django.urls import path
 
-from hw57.views.base import IndexView
+from hw57.views.base import IndexView, IndexRedirectView
 
-from hw57.views.tasks import TaskDetail
+from hw57.views.issues import IssueDetail, IssueUpdateView
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
-    path('task/', IndexView.as_view()),
-    path('task/<int:pk>', TaskDetail.as_view(), name='task_detail')
+    path('issue/', IndexRedirectView.as_view(), name='issue_index_redirect'),
+    path('issue/<int:pk>', IssueDetail.as_view(), name='issue_detail'),
+    path('issue/<int:pk>/update', IssueUpdateView.as_view(), name='issue_update'),
 ]

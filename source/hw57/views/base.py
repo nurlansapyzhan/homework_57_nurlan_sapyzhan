@@ -1,6 +1,6 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 
-from hw57.models import Task
+from hw57.models import Issue
 
 
 class IndexView(TemplateView):
@@ -8,5 +8,9 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['tasks'] = Task.objects.all()
+        context['issues'] = Issue.objects.all()
         return context
+
+
+class IndexRedirectView(RedirectView):
+    pattern_name = 'index'
