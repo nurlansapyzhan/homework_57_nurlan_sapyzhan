@@ -34,3 +34,8 @@ label {
     font-weight: bold;
     margin-bottom: 10px;
 }
+
+.delete_from {
+    background-color: #fff;
+    flex-direction: initial;
+}

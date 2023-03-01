@@ -48,3 +48,18 @@ class IssueCreateView(TemplateView):
             return redirect('index')
         else:
             return render(request, 'issue_create.html', context={'form': form})
+
+
+class IssueDeleteView(TemplateView):
+    template_name = 'issue_delete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['issue'] = get_object_or_404(Issue, pk=kwargs['pk'])
+        return context
+
+    def post(self, request, *args, **kwargs):
+        issue = get_object_or_404(Issue, pk=kwargs['pk'])
+        issue.delete()
+        return redirect('index')
+
