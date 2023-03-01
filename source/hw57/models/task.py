@@ -1,37 +1,7 @@
 from django.db import models
 
-
-# Create your models here.
-class Type(models.Model):
-    name = models.CharField(
-        max_length=30,
-        null=False,
-        blank=False,
-        verbose_name='Тип задачи'
-    )
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Тип задачи'
-        verbose_name_plural = 'Типы задач'
-
-
-class Status(models.Model):
-    name = models.CharField(
-        max_length=30,
-        null=False,
-        blank=False,
-        verbose_name='Статус задачи'
-    )
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Статус'
-        verbose_name_plural = 'Статусы'
+from hw57.models.status import Status
+from hw57.models.type import Type
 
 
 class Task(models.Model):

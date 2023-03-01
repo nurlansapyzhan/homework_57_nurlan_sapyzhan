@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+    Task Detail
+{% endblock %}
+{% block menu %}
+    <li class="nav-item">
+        <a class="nav-link" href="#">Add new issue</a>
+    </li>
+{% endblock %}
+{% block content %}
+    <div class="card mt-2">
+        <h5 class="card-header">Issue Details</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{ task.summary }}</h5>
+            <p class="card-text">Description: {{ task.description }}</p>
+            <p class="card-text">Status: {{ task.status }}</p>
+            <p class="card-text">Type: {{ task.type }}</p>
+            <a href="#" class="btn btn-secondary">Edit</a>
+            <a href="#" class="btn btn-secondary">Delete</a>
+        </div>
+    </div>
+{% endblock %}
