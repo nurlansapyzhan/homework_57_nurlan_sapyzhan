@@ -10,7 +10,9 @@
             <h5 class="card-title">{{ issue.summary }}</h5>
             <p class="card-text">Description: {{ issue.description }}</p>
             <p class="card-text">Status: {{ issue.status }}</p>
-            <p class="card-text">Type: {{ issue.type }}</p>
+            {% for type in issue.type.all %}
+                <p class="card-text">Type: {{ type }}</p>
+            {% endfor %}
             <form action="{% url 'issue_delete' issue.pk %}" method="post" class="delete_from">
                 {% csrf_token %}
                 <button class="btn btn-secondary">Delete</button>

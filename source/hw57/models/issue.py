@@ -1,7 +1,6 @@
 from django.db import models
 
-from hw57.models.status import Status
-from hw57.models.type import Type
+from hw57.models.issuetype import IssueType
 
 
 class Issue(models.Model):
@@ -17,12 +16,15 @@ class Issue(models.Model):
         verbose_name='Полное описание'
     )
     status = models.ForeignKey(
-        to=Status,
+        to='hw57.Status',
         on_delete=models.PROTECT
     )
-    type = models.ForeignKey(
-        to=Type,
-        on_delete=models.PROTECT
+    type = models.ManyToManyField(
+        to='hw57.Type',
+        related_name='issues',
+        through=IssueType,
+        through_fields=('issue', 'type'),
+        blank=True
     )
     created_date = models.DateTimeField(
         verbose_name='Дата и время создания',

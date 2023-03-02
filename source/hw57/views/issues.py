@@ -44,7 +44,10 @@ class IssueCreateView(TemplateView):
     def post(self, request, *args, **kwargs):
         form = IssueForm(request.POST)
         if form.is_valid():
-            Issue.objects.create(**form.cleaned_data)
+            issue = form.save()
+            for type in request.POST.get('type'):
+                issue.type.add(type)
+            issue.save()
             return redirect('index')
         else:
             return render(request, 'issue_create.html', context={'form': form})
@@ -60,6 +63,6 @@ class IssueDeleteView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         issue = get_object_or_404(Issue, pk=kwargs['pk'])
+        issue.type.clear()
         issue.delete()
         return redirect('index')
-

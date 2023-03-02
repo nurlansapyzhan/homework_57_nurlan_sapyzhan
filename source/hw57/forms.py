@@ -1,6 +1,6 @@
 from django import forms
 
-from hw57.models import Issue
+from hw57.models import Issue, Type
 
 
 class IssueForm(forms.ModelForm):

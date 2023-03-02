@@ -16,14 +16,14 @@ class StatusAdmin(admin.ModelAdmin):
     fields = ('id', 'name')
 
 
-class TaskAdmin(admin.ModelAdmin):
-    list_display = ('id', 'summary', 'description', 'status', 'type', 'created_date', 'updated_date')
+class IssueAdmin(admin.ModelAdmin):
+    list_display = ('id', 'summary', 'description', 'status', 'created_date', 'updated_date')
     list_filter = ('id', 'summary', 'description', 'status', 'type')
     search_fields = ('status', 'type', 'finish_date', 'updated_date')
-    fields = ('id', 'summary', 'description', 'status', 'type', 'created_date', 'updated_date')
+    fields = ('id', 'summary', 'description', 'status', 'created_date', 'updated_date')
     readonly_fields = ('id', 'created_date', 'updated_date')
 
 
 admin.site.register(Type, TypeAdmin)
 admin.site.register(Status, StatusAdmin)
-admin.site.register(Issue, TaskAdmin)
+admin.site.register(Issue, IssueAdmin)
